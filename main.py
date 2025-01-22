@@ -281,7 +281,7 @@ def stream_openai_response(user_message: str):
 
     try:
         stream = client.chat.completions.create(
-            model="deepseek-chat",
+            model=os.getenv("DEEPSEEK_MODEL", "deepseek-chat"),
             messages=conversation_history,
             response_format={"type": "json_object"},
             max_completion_tokens=8000,
